@@ -1,46 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-  <link rel="stylesheet" href="orders.css">
-  <title>Orders</title>
-</head>
-<body>
-  <div class="navbar">
-    <h1>orders</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+		/>
+		<link rel="stylesheet" href="orders.css" />
+		<title>Orders</title>
+	</head>
+	<body>
+		<div class="nav-outer">
+			<div class="nav-inner">
+				<h1>orders</h1>
 
-    <a href="/">back</a>
-  </div>
+				<a href="/">back</a>
+			</div>
+		</div>
 
-  <div class="orders-container">
-    <h1 class="order-title">Your orders:</h1>
+		<div class="container-outer">
+			<div class="container-inner">
+				<div class="top-bar">
+					<h1>Your orders:</h1>
+					<h1>total: £240</h1>
+				</div>
 
-    <ul class="orders-list">
-      <li>
-        <p>product name</p>
+				<ul class="order-list-container">
+					<li class="list-item">
+						<div class="list-item-left">
+							<div class="order-thumbnail-container">
+								<img
+									id="order-thumbnail"
+									class="order-thumbnail"
+									src="https://images.pexels.com/photos/24778713/pexels-photo-24778713/free-photo-of-wooden-houses-in-village-in-mountains.jpeg"
+								/>
+							</div>
 
-        <button>remove</button>
-      </li>
-      <li>
-        <p>product name</p>
+							<div class="order-details">
+								<h1>Product name</h1>
+								<p>Vegitarian: <b>TRUE</b></p>
+								<p>Health: <b>FALSE</b></p>
+							</div>
+						</div>
 
-        <button>remove</button>
-      </li>
-      <li>
-        <p>product name</p>
+						<div class="list-item-right">
+							<p>price: £20</p>
+							<button class="order-remove">remove</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <button>remove</button>
-      </li>
-      <li>
-        <p>product name</p>
+		<button id="checkout-button" class="checkout-button">checkout</button>
 
-        <button>remove</button>
-      </li>
-    </ul>
-  </div>
-  
-  <button id="checkout-button" class="checkout-button">checkout</button>
-</body>
+		<template id="modal-template">
+			<div id="modal" class="modal">
+				<div class="modal-close-container">
+					<button class="modal-close">click to close</button>
+				</div>
+
+				<div class="modal-image-container">
+					<img class="modal-image" />
+				</div>
+			</div>
+		</template>
+
+		<script>
+			const modalTemplate = document.getElementById("modal-template");
+			const orderThumbnailEls = [
+				...document.querySelectorAll("#order-thumbnail"),
+			];
+
+			orderThumbnailEls.forEach((e) => {
+				e.addEventListener("click", () => {
+					const modalClone = modalTemplate.content.cloneNode(true);
+
+					const modalRef = modalClone.getElementById("modal");
+
+					modalClone.querySelector("img").src = e.src;
+					modalClone.querySelector("button").addEventListener("click", (e) => {
+						modalRef.remove();
+					});
+
+					document.body.appendChild(modalClone);
+				});
+			});
+		</script>
+	</body>
 </html>
