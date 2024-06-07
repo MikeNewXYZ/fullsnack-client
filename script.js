@@ -1,4 +1,5 @@
 const main = document.querySelector("main");
+const searchInput = document.getElementById("search");
 let snackArray = [];
 
 function getSnacks() {
@@ -39,15 +40,16 @@ function showSnacks(data) {
 
     const snackDescription = document.createElement("p");
     snackDescription.classList.add("snack-description");
-    snackDescription.innerHTML = `${snack_description}`;
+    snackDescription.innerHTML = `"${snack_description}"`;
     cardDescription.appendChild(snackDescription);
 
     const buttons = document.createElement("div");
     buttons.classList.add("buttons");
-    snackDescription.appendChild(buttons);
+    cardDescription.appendChild(buttons);
 
     const addButton = document.createElement("button");
     addButton.classList.add("add-button");
+    addButton.innerHTML = `Add to cart`;
     buttons.appendChild(addButton);
 
     const likeButton = document.createElement("button");
@@ -59,9 +61,13 @@ function showSnacks(data) {
     likeButton.appendChild(likeIcon);
 
     main.appendChild(cardEl);
-    return { snack_name, snack_description, image_url };
-
-    // addButton.addEventListener("click", addToCart());
-    //likeIcon.addEventListener("click", addToVotes());
+    return { element: cardEl, snack_name, snack_description, image_url };
   });
 }
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  snackArray.forEach((card) => {
+    const isVisible = card.snack_name.toLowerCase().includes(value);
+    card.element.classList.toggle("hide", !isVisible);
+  });
+});
