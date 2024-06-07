@@ -15,7 +15,7 @@
 			<div class="nav-inner">
 				<h1>orders</h1>
 
-				<a href="/">back</a>
+				<a href="/" class="jello-horizontal">back</a>
 			</div>
 		</div>
 
@@ -29,7 +29,7 @@
 				<ul class="order-list-container">
 					<li class="list-item">
 						<div class="list-item-left">
-							<div class="order-thumbnail-container">
+							<div class="order-thumbnail-container jello-horizontal">
 								<img
 									id="order-thumbnail"
 									class="order-thumbnail"
@@ -46,19 +46,29 @@
 
 						<div class="list-item-right">
 							<p>price: £20</p>
-							<button class="order-remove">remove</button>
+
+							<div class="list-item-bottom-right">
+								<div class="order-count">
+									<button class="jello-horizontal">-</button>
+									<p>23</p>
+									<button class="jello-horizontal">+</button>
+								</div>
+								<button class="order-remove jello-horizontal">remove</button>
+							</div>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 
-		<button id="checkout-button" class="checkout-button">checkout</button>
+		<button id="checkout-button" class="checkout-button jello-horizontal">
+			checkout
+		</button>
 
 		<template id="modal-template">
-			<div id="modal" class="modal">
+			<div id="modal" class="modal slide-in-fwd-center">
 				<div class="modal-close-container">
-					<button class="modal-close">click to close</button>
+					<button class="modal-close jello-horizontal">click to close</button>
 				</div>
 
 				<div class="modal-image-container">
