@@ -26,44 +26,46 @@
 					<h1>total: £240</h1>
 				</div>
 
-				<ul class="order-list-container">
-					<li class="list-item">
-						<div class="list-item-left">
-							<div class="order-thumbnail-container jello-horizontal">
-								<img
-									id="order-thumbnail"
-									class="order-thumbnail"
-									src="https://images.pexels.com/photos/24778713/pexels-photo-24778713/free-photo-of-wooden-houses-in-village-in-mountains.jpeg"
-								/>
-							</div>
-
-							<div class="order-details">
-								<h1>Product name</h1>
-								<p>Vegitarian: <b>TRUE</b></p>
-								<p>Health: <b>FALSE</b></p>
-							</div>
-						</div>
-
-						<div class="list-item-right">
-							<p>price: £20</p>
-
-							<div class="list-item-bottom-right">
-								<div class="order-count">
-									<button class="jello-horizontal">-</button>
-									<p>23</p>
-									<button class="jello-horizontal">+</button>
-								</div>
-								<button class="order-remove jello-horizontal">remove</button>
-							</div>
-						</div>
-					</li>
-				</ul>
+				<ul id="order-list" class="order-list-container"></ul>
 			</div>
 		</div>
 
 		<button id="checkout-button" class="checkout-button jello-horizontal">
 			checkout
 		</button>
+
+		<template id="list-item-template">
+			<li id="list-item" class="list-item">
+				<div class="list-item-left">
+					<div class="order-thumbnail-container jello-horizontal">
+						<img
+							id="order-thumbnail"
+							class="order-thumbnail"
+							src="https://images.pexels.com/photos/24778713/pexels-photo-24778713/free-photo-of-wooden-houses-in-village-in-mountains.jpeg"
+						/>
+					</div>
+
+					<div class="order-details">
+						<h1 id="product-name">Product name</h1>
+						<p>Vegitarian: <b id="vegitarian">TRUE</b></p>
+						<p>Healthy: <b id="health">FALSE</b></p>
+					</div>
+				</div>
+
+				<div class="list-item-right">
+					<p>price: £20</p>
+
+					<div class="list-item-bottom-right">
+						<div class="order-count">
+							<button class="jello-horizontal">-</button>
+							<p>23</p>
+							<button class="jello-horizontal">+</button>
+						</div>
+						<button class="order-remove jello-horizontal">remove</button>
+					</div>
+				</div>
+			</li>
+		</template>
 
 		<template id="modal-template">
 			<div id="modal" class="modal slide-in-fwd-center">
@@ -78,6 +80,10 @@
 		</template>
 
 		<script>
+			console.log(JSON.parse(window.localStorage.getItem("cart")));
+
+			const cart = JSON.parse(window.localStorage.getItem("cart")).cart;
+			const listItemTemplate = document.getElementById("list-item-template");
 			const modalTemplate = document.getElementById("modal-template");
 			const orderThumbnailEls = [
 				...document.querySelectorAll("#order-thumbnail"),
@@ -96,6 +102,36 @@
 
 					document.body.appendChild(modalClone);
 				});
+			});
+
+			cart.forEach((item) => {
+				const listItemClone = listItemTemplate.content.cloneNode(true);
+				const productNameEl = listItemClone.getElementById("product-name");
+				const vegitarianEl = listItemClone.getElementById("vegitarian");
+				const healthEl = listItemClone.getElementById("health");
+				const productThumnailEl =
+					listItemClone.getElementById("order-thumbnail");
+
+				console.log(listItemClone);
+
+				productNameEl.textContent = item.snack_name;
+				productThumnailEl.src = item.image_url;
+				productThumnailEl.addEventListener("click", () => {
+					const modalClone = modalTemplate.content.cloneNode(true);
+
+					const modalRef = modalClone.getElementById("modal");
+
+					modalClone.querySelector("img").src = productThumnailEl.src;
+					modalClone.querySelector("button").addEventListener("click", (e) => {
+						modalRef.remove();
+					});
+
+					document.body.appendChild(modalClone);
+				});
+				vegitarianEl.textContent = item.vegetarian === 0 ? "FALSE" : "TRUE";
+				healthEl.textContent = item.health === 0 ? "FALSE" : "TRUE";
+
+				document.getElementById("order-list").appendChild(listItemClone);
 			});
 		</script>
 	</body>
