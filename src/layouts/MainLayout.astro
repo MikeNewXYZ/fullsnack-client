@@ -1,0 +1,45 @@
+---
+import "reset-css";
+import "../styles/global.css";
+import "@phosphor-icons/web/fill";
+const { title, headerText } = Astro.props;
+import Navbar from "../components/Header/Header.astro";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Navbar headerText={headerText}>
+			<slot name="header" />
+		</Navbar>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	body {
+		width: 100%;
+		height: 100dvh;
+		overflow: hidden;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem;
+		background-image: url(../asssets/images/sayagata.png);
+		background-repeat: repeat;
+		background-color: var(--color-base-100);
+	}
+
+	main {
+		width: 100%;
+		flex-grow: 1;
+	}
+</style>

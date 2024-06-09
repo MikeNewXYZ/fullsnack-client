@@ -1,0 +1,24 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import CartLink from "../components/CartLink/CartLink.astro";
+---
+
+<MainLayout title="FullSnack" headerText="FullSnack">
+	<Fragment slot="header">
+		<div class="header">
+			<CartLink />
+		</div>
+	</Fragment>
+
+	<h1>home page</h1>
+</MainLayout>
+
+<style>
+	.header {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: end;
+		align-items: center;
+	}
+</style>
