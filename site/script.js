@@ -2,7 +2,7 @@ const main = document.querySelector("main");
 let snackArray = [];
 
 function getSnacks() {
-	fetch("http://localhost:5050/snacks")
+	fetch("https://fullsnack-server-production.up.railway.app/snacks")
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
