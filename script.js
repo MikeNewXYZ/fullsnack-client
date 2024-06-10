@@ -3,7 +3,7 @@ const searchInput = document.getElementById("search");
 let snackArray = [];
 
 function getSnacks() {
-  fetch("")
+  fetch("https://fullsnack-server-production.up.railway.app/snacks")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -19,7 +19,7 @@ getSnacks();
 function showSnacks(data) {
   main.innerHTML = "";
   snackArray = data.map((card) => {
-    const { snack_name, snack_description, image_url } = card;
+    const { snack_name, snack_description, price, image_url } = card;
 
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
@@ -43,9 +43,18 @@ function showSnacks(data) {
     snackDescription.innerHTML = `"${snack_description}"`;
     cardDescription.appendChild(snackDescription);
 
+    const buyersInformation = document.createElement("div");
+    buyersInformation.classList.add("info-to-buy");
+    cardDescription.appendChild(buyersInformation);
+
+    const priceInfo = document.createElement("div");
+    priceInfo.classList.add("price");
+    priceInfo.innerHTML = `£${price}`;
+    buyersInformation.appendChild(priceInfo);
+
     const buttons = document.createElement("div");
     buttons.classList.add("buttons");
-    cardDescription.appendChild(buttons);
+    buyersInformation.appendChild(buttons);
 
     const addButton = document.createElement("button");
     addButton.classList.add("add-button");
