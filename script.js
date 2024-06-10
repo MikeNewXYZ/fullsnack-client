@@ -3,7 +3,7 @@ const searchInput = document.getElementById("search");
 let snackArray = [];
 
 function getSnacks() {
-  fetch("http://localhost:5050/snacks")
+  fetch("")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
