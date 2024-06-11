@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+		/>
+		<link rel="stylesheet" href="cart.css" />
+		<title>Orders</title>
+	</head>
+	<body>
+		<div class="nav-outer">
+			<div class="nav-inner">
+				<h1>cart</h1>
+
+				<a href="/" class="jello-horizontal">back</a>
+			</div>
+		</div>
+
+		<div class="container-outer">
+			<div class="container-inner">
+				<div class="top-bar">
+					<h1>Your cart:</h1>
+					<h1>total: £240</h1>
+				</div>
+
+				<ul id="order-list" class="order-list-container"></ul>
+			</div>
+		</div>
+
+		<button id="checkout-button" class="checkout-button jello-horizontal">
+			checkout
+		</button>
+
+		<template id="list-item-template">
+			<li id="list-item" class="list-item">
+				<div class="list-item-left">
+					<div class="order-thumbnail-container jello-horizontal">
+						<img
+							id="order-thumbnail"
+							class="order-thumbnail"
+							src="https://images.pexels.com/photos/24778713/pexels-photo-24778713/free-photo-of-wooden-houses-in-village-in-mountains.jpeg"
+						/>
+					</div>
+
+					<div class="order-details">
+						<h1 id="product-name">Product name</h1>
+						<p>Vegitarian: <b id="vegitarian">TRUE</b></p>
+						<p>Healthy: <b id="health">FALSE</b></p>
+					</div>
+				</div>
+
+				<div class="list-item-right">
+					<p>price: £20</p>
+
+					<div class="list-item-bottom-right">
+						<div class="order-count">
+							<button class="jello-horizontal">-</button>
+							<p>23</p>
+							<button class="jello-horizontal">+</button>
+						</div>
+						<button class="order-remove jello-horizontal">remove</button>
+					</div>
+				</div>
+			</li>
+		</template>
+
+		<template id="modal-template">
+			<div id="modal" class="modal slide-in-fwd-center">
+				<div class="modal-close-container">
+					<button class="modal-close jello-horizontal">click to close</button>
+				</div>
+
+				<div class="modal-image-container">
+					<img class="modal-image" />
+				</div>
+			</div>
+		</template>
+
+		<script>
+			console.log(JSON.parse(window.localStorage.getItem("cart")));
+
+			const cart = JSON.parse(window.localStorage.getItem("cart")).cart;
+			const listItemTemplate = document.getElementById("list-item-template");
+			const modalTemplate = document.getElementById("modal-template");
+			const orderThumbnailEls = [
+				...document.querySelectorAll("#order-thumbnail"),
+			];
+
+			orderThumbnailEls.forEach((e) => {
+				e.addEventListener("click", () => {
+					const modalClone = modalTemplate.content.cloneNode(true);
+
+					const modalRef = modalClone.getElementById("modal");
+
+					modalClone.querySelector("img").src = e.src;
+					modalClone.querySelector("button").addEventListener("click", (e) => {
+						modalRef.remove();
+					});
+
+					document.body.appendChild(modalClone);
+				});
+			});
+
+			cart.forEach((item) => {
+				const listItemClone = listItemTemplate.content.cloneNode(true);
+				const productNameEl = listItemClone.getElementById("product-name");
+				const vegitarianEl = listItemClone.getElementById("vegitarian");
+				const healthEl = listItemClone.getElementById("health");
+				const productThumnailEl =
+					listItemClone.getElementById("order-thumbnail");
+
+				console.log(listItemClone);
+
+				productNameEl.textContent = item.snack_name;
+				productThumnailEl.src = item.image_url;
+				productThumnailEl.addEventListener("click", () => {
+					const modalClone = modalTemplate.content.cloneNode(true);
+
+					const modalRef = modalClone.getElementById("modal");
+
+					modalClone.querySelector("img").src = productThumnailEl.src;
+					modalClone.querySelector("button").addEventListener("click", (e) => {
+						modalRef.remove();
+					});
+
+					document.body.appendChild(modalClone);
+				});
+				vegitarianEl.textContent = item.vegetarian === 0 ? "FALSE" : "TRUE";
+				healthEl.textContent = item.health === 0 ? "FALSE" : "TRUE";
+
+				document.getElementById("order-list").appendChild(listItemClone);
+			});
+		</script>
+	</body>
+</html>
