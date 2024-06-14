@@ -1,0 +1,97 @@
+/* GLOBAL */
+
+:root {
+  --color-primary: white;
+  --color-secondary: black;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: normal;
+}
+
+a:focus, a:hover {
+  text-decoration: inherit;
+}
+
+/* NAVBAR */
+/* prefix: navbar- */
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+  .navbar-header {
+    font-size: 1.25rem;
+  }
+
+  .navbar-cart-button {
+    font-size: 1rem;
+  }
+}
+
+/* FOR TABLETS AND DESKTOPS */
+@media only screen and (min-width: 600px) {
+  .navbar-header {
+    font-size: 1.5rem;
+  }
+
+  .navbar-cart-button {
+    font-size: 1.25rem;
+  }
+}
+
+.navbar-wrapper {
+  width: 100%;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 0.5rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-cart-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 0.25rem 0.5rem 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+}
