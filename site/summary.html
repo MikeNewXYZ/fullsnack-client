@@ -10,6 +10,7 @@
 			type="text/css"
 			href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
 		/>
+		<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 	</head>
 	<body>
 		<header class="navbar-wrapper">
@@ -30,5 +31,10 @@
 		</header>
 
 		<script src="./components.js"></script>
+		<script>
+			const jsConfetti = new JSConfetti();
+
+			jsConfetti.addConfetti();
+		</script>
 	</body>
 </html>
