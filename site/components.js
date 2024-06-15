@@ -24,7 +24,7 @@ customElements.define(
 
 			// setup event listenters
 			this.childEl.addEventListener("mousemove", this.animate.bind(this));
-			this.childEl.addEventListener("mouseout", this.reset);
+			this.childEl.addEventListener("mouseout", this.reset.bind(this));
 		}
 
 		// runs on component dismount
@@ -36,14 +36,14 @@ customElements.define(
 
 		animate(e) {
 			requestAnimationFrame(() => {
-				const halfHeight = e.target.offsetHeight / 2;
-				const halfWidth = e.target.offsetWidth / 2;
+				const halfHeight = this.childEl.offsetHeight / 2;
+				const halfWidth = this.childEl.offsetWidth / 2;
 				const mouseY = e.offsetY;
 				const mouseX = e.offsetX;
 				const rotateY = -((mouseX - halfWidth) / halfWidth);
 				const rotateX = (mouseY - halfHeight) / halfHeight;
 
-				Object.assign(e.target.style, {
+				Object.assign(this.childEl.style, {
 					transform: `
             rotateX(${rotateX * this.multiplier}deg)
             rotateY(${rotateY * this.multiplier}deg)
@@ -55,7 +55,7 @@ customElements.define(
 
 		reset(e) {
 			requestAnimationFrame(() => {
-				Object.assign(e.target.style, {
+				Object.assign(this.childEl.style, {
 					transform: `
             rotateX(0deg)
             rotateY(0deg)
