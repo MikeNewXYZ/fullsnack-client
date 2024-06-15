@@ -35,7 +35,7 @@
 			</floating-card>
 		</header>
 
-		<card-layout-wrapper class="card-layout-wrapper">
+		<card-layout-wrapper class="card-layout-wrapper" search="">
 			<template>
 				<floating-card multiplier="5">
 					<snack-card id="card" class="card-wrapper">
@@ -70,23 +70,17 @@
 			</template>
 		</card-layout-wrapper>
 
-		<!-- <script src="./script.js"></script> -->
+		<floating-toolbar class="floating-toolbar-wrapper">
+			<floating-card class="floating-toolbar-search-wrapper">
+				<input
+					id="floating-toolbar-search"
+					class="floating-toolbar-search"
+					type="text"
+					placeholder="search"
+				/>
+			</floating-card>
+		</floating-toolbar>
+
 		<script src="./components.js"></script>
 	</body>
 </html>
-
-<!-- <div class="card">
-				<img src="src/IMG_1188.jpg" alt="image" />
-
-				<div class="card-description">
-					<h1 class="snack-name">SNACK NAME</h1>
-
-					<p class="snack-description">'some description'</p>
-					<div class="buttons">
-						<button class="add-button">Add to cart</button>
-						<button class="like-button">
-							<i class="fa-solid fa-heart"></i>
-						</button>
-					</div>
-				</div>
-			</div> -->

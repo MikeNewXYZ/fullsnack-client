@@ -72,12 +72,22 @@ customElements.define(
 customElements.define(
 	"card-layout-wrapper",
 	class extends HTMLElement {
+		static observedAttributes = ["search"];
+
 		constructor() {
 			super();
 			this.cardTemplate = this.querySelector("template");
+			this.cards = [];
+			this.search = "";
 		}
 
-		connectedCallback() {
+		async connectedCallback() {
+			this.cards = await this.fetchData();
+			this.populateWithCards();
+		}
+
+		attributeChangedCallback(name, oldValue, newValue) {
+			this.search = newValue;
 			this.populateWithCards();
 		}
 
@@ -85,18 +95,18 @@ customElements.define(
 			const response = await fetch("https://fullsnack-server-production.up.railway.app/snacks");
 			const data = await response.json();
 
-			console.log(data);
-
 			return data;
 		}
 
-		async populateWithCards() {
-			const data = await this.fetchData();
+		populateWithCards() {
+			this.innerHTML = "";
 
-			data.forEach((data) => {
+			this.cards.forEach((data) => {
 				const cardClone = this.cardTemplate.content.cloneNode(true);
 				const containerEl = cardClone.getElementById("card");
 				containerEl.dataset.data = JSON.stringify(data);
+
+				if (!data.snack_name.toLowerCase().includes(this.search.toLowerCase())) return;
 
 				this.append(cardClone);
 			});
@@ -164,6 +174,26 @@ customElements.define(
 
 		handleLikeButton() {
 			console.log("not done yet");
+		}
+	},
+);
+
+// FLOATING TOOLBAR
+customElements.define(
+	"floating-toolbar",
+	class extends HTMLElement {
+		constructor() {
+			super();
+			this.cardLayoutWrapperEl = document.querySelector("card-layout-wrapper");
+			this.searchEl = this.querySelector("#floating-toolbar-search");
+		}
+
+		connectedCallback() {
+			this.searchEl.addEventListener("input", this.handleSearch.bind(this));
+		}
+
+		handleSearch(e) {
+			this.cardLayoutWrapperEl.setAttribute("search", e.target.value);
 		}
 	},
 );
