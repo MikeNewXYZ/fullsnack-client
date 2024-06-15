@@ -35,8 +35,47 @@
 			</floating-card>
 		</header>
 
-		<main class="content-wrapper">
-			<div class="card">
+		<card-layout-wrapper class="card-layout-wrapper">
+			<template>
+				<floating-card multiplier="5">
+					<snack-card id="card" class="card-wrapper">
+						<div class="card-content">
+							<div class="card-top">
+								<div class="card-top-left">
+									<p id="card-title" class="card-title">snack name</p>
+									<p id="card-price">£20.20</p>
+								</div>
+
+								<button id="card-button-like" class="card-button-like">
+									<i class="ph-fill ph-heart"></i>
+								</button>
+							</div>
+
+							<div class="card-description">
+								<p id="card-description">The least scary thing anyone could ever think of</p>
+							</div>
+
+							<button id="card-button-add" class="card-button-add">
+								<i class="ph-fill ph-shopping-cart"></i>
+
+								<span>add</span>
+							</button>
+						</div>
+
+						<div class="card-overlay"></div>
+
+						<img id="card-image" class="card-image" src="src/IMG_1188.jpg" alt="image" />
+					</snack-card>
+				</floating-card>
+			</template>
+		</card-layout-wrapper>
+
+		<!-- <script src="./script.js"></script> -->
+		<script src="./components.js"></script>
+	</body>
+</html>
+
+<!-- <div class="card">
 				<img src="src/IMG_1188.jpg" alt="image" />
 
 				<div class="card-description">
@@ -50,10 +89,4 @@
 						</button>
 					</div>
 				</div>
-			</div>
-		</main>
-
-		<script src="./script.js"></script>
-		<script src="./components.js"></script>
-	</body>
-</html>
+			</div> -->

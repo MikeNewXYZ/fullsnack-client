@@ -1,3 +1,4 @@
+// FLOATING CARD
 customElements.define(
 	"floating-card",
 	class extends HTMLElement {
@@ -53,7 +54,7 @@ customElements.define(
 			});
 		}
 
-		reset(e) {
+		reset() {
 			requestAnimationFrame(() => {
 				Object.assign(this.childEl.style, {
 					transform: `
@@ -63,6 +64,106 @@ customElements.define(
           `,
 				});
 			});
+		}
+	},
+);
+
+// CARD LAYOUT WRAPPER
+customElements.define(
+	"card-layout-wrapper",
+	class extends HTMLElement {
+		constructor() {
+			super();
+			this.cardTemplate = this.querySelector("template");
+		}
+
+		connectedCallback() {
+			this.populateWithCards();
+		}
+
+		async fetchData() {
+			const response = await fetch("https://fullsnack-server-production.up.railway.app/snacks");
+			const data = await response.json();
+
+			console.log(data);
+
+			return data;
+		}
+
+		async populateWithCards() {
+			const data = await this.fetchData();
+
+			data.forEach((data) => {
+				const cardClone = this.cardTemplate.content.cloneNode(true);
+				const containerEl = cardClone.getElementById("card");
+				containerEl.dataset.data = JSON.stringify(data);
+
+				this.append(cardClone);
+			});
+		}
+	},
+);
+
+// SNACK CARD
+customElements.define(
+	"snack-card",
+	class extends HTMLElement {
+		constructor() {
+			super();
+			this.data = JSON.parse(this.getAttribute("data-data")) || {};
+			this.titleEl = this.querySelector("#card-title");
+			this.priceEl = this.querySelector("#card-price");
+			this.descriptionEl = this.querySelector("#card-description");
+			this.imageEl = this.querySelector("#card-image");
+			this.addButtonEl = this.querySelector("#card-button-add");
+			this.likeButtonEl = this.querySelector("#card-button-like");
+		}
+
+		connectedCallback() {
+			this.setData();
+
+			this.addButtonEl.addEventListener("click", this.handleAddButton.bind(this));
+			this.likeButtonEl.addEventListener("click", this.handleLikeButton.bind(this));
+		}
+
+		setData() {
+			const { snack_name, price, snack_description, image_url } = this.data;
+
+			this.titleEl.textContent = snack_name;
+			this.priceEl.textContent = `£${price}`;
+			this.descriptionEl.textContent = snack_description;
+			this.imageEl.src = image_url;
+		}
+
+		handleAddButton() {
+			const cartDataRaw = window.localStorage.getItem("cart");
+			const cartData = JSON.parse(cartDataRaw);
+			let newCart = cartData ? [...cartData] : [];
+
+			if (cartData?.find(({ id }) => id === this.data.snack_id)) {
+				newCart = newCart.map((data) => {
+					if (data.id === this.data.snack_id) {
+						return {
+							id: data.id,
+							quantity: data.quantity + 1,
+							productData: this.data,
+						};
+					}
+					return data;
+				});
+			} else {
+				newCart.push({
+					id: this.data.snack_id,
+					quantity: 1,
+					productData: this.data,
+				});
+			}
+
+			window.localStorage.setItem("cart", JSON.stringify(newCart));
+		}
+
+		handleLikeButton() {
+			console.log("not done yet");
 		}
 	},
 );
