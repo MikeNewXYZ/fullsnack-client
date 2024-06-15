@@ -1,47 +1,63 @@
 /* GLOBAL */
 
 :root {
-  --color-primary: white;
-  --color-secondary: black;
+	--color-primary: white;
+	--color-secondary: black;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
 }
 
 body {
-  width: 100%;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+	width: 100%;
+	min-height: 100dvh;
+	overflow-x: hidden;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
 }
 
-input, button, textarea, select {
-  font: inherit;
+input,
+button,
+textarea,
+select {
+	font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-  font-weight: normal;
-  font-style: normal;
-  font-size: inherit;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: normal;
+	text-decoration: none;
+	color: inherit;
+	font-weight: normal;
 }
 
-a:focus, a:hover {
-  text-decoration: inherit;
+a:focus,
+a:hover {
+	text-decoration: inherit;
 }
 
 /* NAVBAR */
@@ -49,64 +65,68 @@ a:focus, a:hover {
 
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {
-  .navbar-header {
-    font-size: 1.25rem;
-  }
+	.navbar-header {
+		font-size: 1.25rem;
+	}
 
-  .navbar-cart-button {
-    font-size: 1rem;
-  }
+	.navbar-cart-button {
+		font-size: 1rem;
+	}
 }
 
 /* FOR TABLETS AND DESKTOPS */
 @media only screen and (min-width: 600px) {
-  .navbar-header {
-    font-size: 1.5rem;
-  }
+	.navbar-header {
+		font-size: 1.5rem;
+	}
 
-  .navbar-cart-button {
-    font-size: 1.25rem;
-  }
+	.navbar-cart-button {
+		font-size: 1.25rem;
+	}
 }
 
 .navbar-wrapper {
-  width: 100%;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  padding: 0.5rem;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  border-bottom: 0.15rem solid var(--color-primary);
-  box-shadow:
-    0px 0.6px 2.2px rgba(0, 0, 0, 0.014),
-    0px 1.3px 5.3px rgba(0, 0, 0, 0.02),
-    0px 2.5px 10px rgba(0, 0, 0, 0.025),
-    0px 4.5px 17.9px rgba(0, 0, 0, 0.03),
-    0px 8.4px 33.4px rgba(0, 0, 0, 0.036),
-    0px 20px 80px rgba(0, 0, 0, 0.05)
-  ;
+	width: 100%;
+	background-color: var(--color-secondary);
+	color: var(--color-primary);
+	padding: 0.5rem;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	border-bottom: 0.15rem solid var(--color-primary);
+	box-shadow:
+		0px 0.6px 2.2px rgba(0, 0, 0, 0.014),
+		0px 1.3px 5.3px rgba(0, 0, 0, 0.02),
+		0px 2.5px 10px rgba(0, 0, 0, 0.025),
+		0px 4.5px 17.9px rgba(0, 0, 0, 0.03),
+		0px 8.4px 33.4px rgba(0, 0, 0, 0.036),
+		0px 20px 80px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.navbar-icon {
+	display: block;
+	margin-bottom: 2.5px;
 }
 
 .navbar-cart-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  padding: 0.25rem 0.5rem 0.15rem 0.5rem;
-  border-radius: 0.25rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+	padding: 0.25rem 0.5rem 0.15rem 0.5rem;
+	border-radius: 0.25rem;
 }
 
 /* CONTENT */
@@ -114,14 +134,14 @@ a:focus, a:hover {
 
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {
-  .content-wrapper {
-    margin-top: 3.2rem;
-  }
+	.content-wrapper {
+		margin-top: 3.2rem;
+	}
 }
 
 /* FOR TABLETS AND DESKTOPS */
 @media only screen and (min-width: 600px) {
-  .content-wrapper {
-    margin-top: 3.8rem;
-  }
+	.content-wrapper {
+		margin-top: 3.8rem;
+	}
 }

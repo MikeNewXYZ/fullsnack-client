@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -10,28 +10,30 @@
 		<!-- <link rel="stylesheet" href="styles.css" /> -->
 		<!-- <link rel="stylesheet" href="cards.css" /> -->
 		<link rel="stylesheet" href="newIndex.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
-    />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
+		/>
 
 		<title>Snacks</title>
 	</head>
 	<body>
 		<header class="navbar-wrapper">
 			<a class="navbar-header" href="./index.html">
-				<i class="ph-fill ph-hamburger"></i>
+				<floating-card multiplier="30" hoverScale="1.1">
+					<i class="navbar-icon ph-fill ph-hamburger"></i>
+				</floating-card>
 				<h1>fullsnack</h1>
 			</a>
 
-
-			<a class="navbar-cart-button" href="./cart.html">
-				<i class="ph-fill ph-shopping-cart"></i>
-				<span>cart</span>
-			</a>
+			<floating-card multiplier="10">
+				<a class="navbar-cart-button" href="./cart.html">
+					<i class="ph-fill ph-shopping-cart"></i>
+					<span>cart</span>
+				</a>
+			</floating-card>
 		</header>
-
 
 		<main class="content-wrapper">
 			<div class="card">
@@ -52,5 +54,6 @@
 		</main>
 
 		<script src="./script.js"></script>
+		<script src="./components.js"></script>
 	</body>
 </html>
