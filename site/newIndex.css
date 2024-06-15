@@ -83,6 +83,24 @@ i {
 	display: block;
 }
 
+/* UTILITY */
+/* prefix: utility- */
+.utility-hover-toggle > .utility-hover-toggle-one {
+	display: none;
+}
+
+.utility-hover-toggle > .utility-hover-toggle-two {
+	display: block;
+}
+
+.utility-hover-toggle:hover > .utility-hover-toggle-two {
+	display: none;
+}
+
+.utility-hover-toggle:hover > .utility-hover-toggle-one {
+	display: block;
+}
+
 /* NAVBAR */
 /* prefix: navbar- */
 
