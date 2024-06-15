@@ -176,41 +176,43 @@ i {
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {
 	.card-layout-wrapper {
-		padding-top: 3.2rem;
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
+		gap: 1.5rem;
+		padding-top: 4rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 		grid-template-columns: minmax(0, 1fr);
 		grid-auto-rows: minmax(0, 25rem);
-		width: 100%;
 	}
 }
 
 /* FOR TABLETS */
 @media only screen and (min-width: 600px) {
 	.card-layout-wrapper {
-		padding-top: 3.8rem;
+		padding-top: 5rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		gap: 2rem;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		grid-auto-rows: minmax(0, 15rem);
-		width: 80%;
-		margin: auto;
 	}
 }
 
 /* FOR DESKTOP */
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1500px) {
 	.card-layout-wrapper {
-		padding-top: 3.8rem;
+		gap: 3rem;
+		padding-top: 5rem;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		grid-auto-rows: minmax(0, 20rem);
-		width: 75%;
-		margin: auto;
+		padding-left: 3rem;
+		padding-right: 3rem;
 	}
 }
 
 .card-layout-wrapper {
 	display: grid;
-	gap: 1rem;
 	min-height: 100dvh;
+	width: 100%;
 }
 
 .card-wrapper {
@@ -220,6 +222,13 @@ i {
 	height: 100%;
 	overflow: hidden;
 	border-radius: 0.5rem;
+	box-shadow:
+		0px 1.4px 2.2px rgba(0, 0, 0, 0.014),
+		0px 3.3px 5.3px rgba(0, 0, 0, 0.02),
+		0px 6.3px 10px rgba(0, 0, 0, 0.025),
+		0px 11.2px 17.9px rgba(0, 0, 0, 0.03),
+		0px 20.9px 33.4px rgba(0, 0, 0, 0.036),
+		0px 50px 80px rgba(0, 0, 0, 0.05);
 }
 
 .card-image {
