@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="./styles/global.css" />
 		<link rel="stylesheet" href="./styles/utility.css" />
 		<link rel="stylesheet" href="./styles/navbar.css" />
+		<link rel="stylesheet" href="./styles/cart-item.css" />
 		<!-- ICONS -->
 		<link
 			rel="stylesheet"
@@ -33,6 +34,50 @@
 				</a>
 			</floating-card>
 		</header>
+
+		<cart-item-layout class="cart-item-layout">
+			<ul id="cart-item-list-wrapper" class="cart-item-list-wrapper">
+				<template>
+					<floating-card multiplier="2" hoverScale="1.02">
+						<cart-item-list id="card-item-list" class="cart-item-list">
+							<div class="cart-item-left">
+								<div class="cart-item-image-wrapper">
+									<img
+										id="cart-item-image"
+										class="cart-item-image"
+										src="https://images.pexels.com/photos/25665222/pexels-photo-25665222/free-photo-of-man-leaning-against-the-wall.jpeg"
+									/>
+								</div>
+
+								<ul class="cart-item-details-wrapper">
+									<li id="cart-item-title">product name</li>
+									<li id="cart-item-vegetarian">- i'm vegitarian</li>
+									<li id="cart-item-healthy">- i'm healthy</li>
+								</ul>
+							</div>
+
+							<div class="cart-item-right">
+								<button id="cart-item-remove" class="cart-item-remove-button">
+									<i class="ph-fill ph-trash"></i>
+									<span>remove</span>
+								</button>
+
+								<label class="cart-item-quantity-input-wrapper">
+									<span>quantity</span>
+									<input
+										id="cart-item-quantity-input"
+										class="cart-item-quantity-input"
+										type="number"
+										placeholder="5"
+										min="0"
+									/>
+								</label>
+							</div>
+						</cart-item-list>
+					</floating-card>
+				</template>
+			</ul>
+		</cart-item-layout>
 
 		<!-- SCRIPTS -->
 		<script src="./scripts/components.js"></script>
