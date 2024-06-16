@@ -198,6 +198,7 @@ customElements.define(
 	},
 );
 
+// CART ITEM LAYOUT
 customElements.define(
 	"cart-item-layout",
 	class extends HTMLElement {
@@ -227,6 +228,7 @@ customElements.define(
 	},
 );
 
+// CART ITEM LIST
 customElements.define(
 	"cart-item-list",
 	class extends HTMLElement {
