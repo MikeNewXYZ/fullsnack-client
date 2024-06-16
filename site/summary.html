@@ -4,15 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>FULLSNACK - Summary</title>
-		<link rel="stylesheet" href="newIndex.css" />
+		<!-- STYLES -->
+		<link rel="stylesheet" href="./styles/global.css" />
+		<link rel="stylesheet" href="./styles/utility.css" />
+		<link rel="stylesheet" href="./styles/navbar.css" />
+		<!-- ICONS -->
 		<link
 			rel="stylesheet"
 			type="text/css"
 			href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
 		/>
-		<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 	</head>
 	<body>
+		<!-- NAVBAR -->
 		<header class="navbar-wrapper">
 			<a class="navbar-header" href="./index.html">
 				<floating-card multiplier="30" hoverScale="1.1">
@@ -30,7 +34,9 @@
 			</floating-card>
 		</header>
 
-		<script src="./components.js"></script>
+		<!-- SCRIPTS -->
+		<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+		<script src="./scripts/components.js"></script>
 		<script>
 			const jsConfetti = new JSConfetti();
 

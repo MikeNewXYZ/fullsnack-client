@@ -3,22 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- <link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
-		/> -->
-		<!-- <link rel="stylesheet" href="styles.css" /> -->
-		<!-- <link rel="stylesheet" href="cards.css" /> -->
-		<link rel="stylesheet" href="newIndex.css" />
+		<title>FULLSNACK</title>
+		<!-- STYLES -->
+		<link rel="stylesheet" href="./styles/global.css" />
+		<link rel="stylesheet" href="./styles/utility.css" />
+		<link rel="stylesheet" href="./styles/navbar.css" />
+		<link rel="stylesheet" href="./styles/card.css" />
+		<link rel="stylesheet" href="./styles/floating-toolbar.css" />
+		<!-- ICONS -->
 		<link
 			rel="stylesheet"
 			type="text/css"
 			href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
 		/>
-
-		<title>Snacks</title>
 	</head>
 	<body>
+		<!-- NAVBAR -->
 		<header class="navbar-wrapper">
 			<a class="navbar-header" href="./index.html">
 				<floating-card multiplier="30" hoverScale="1.1">
@@ -35,6 +35,7 @@
 			</floating-card>
 		</header>
 
+		<!-- SNACK CARDS -->
 		<card-layout-wrapper class="card-layout-wrapper" search="">
 			<template>
 				<floating-card multiplier="5">
@@ -70,6 +71,7 @@
 			</template>
 		</card-layout-wrapper>
 
+		<!-- FLOATING TOOLBAR -->
 		<floating-toolbar class="floating-toolbar-wrapper">
 			<floating-card class="floating-toolbar-search-wrapper">
 				<input
@@ -81,6 +83,7 @@
 			</floating-card>
 		</floating-toolbar>
 
-		<script src="./components.js"></script>
+		<!-- SCRIPTS -->
+		<script src="./scripts/components.js"></script>
 	</body>
 </html>

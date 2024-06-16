@@ -1,0 +1,84 @@
+/* GLOBAL */
+
+:root {
+	--color-primary: white;
+	--color-secondary: black;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	width: 100%;
+	min-height: 100dvh;
+	overflow-x: hidden;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+input {
+	border: none;
+	background-image: none;
+	background-color: transparent;
+}
+
+input:focus {
+	outline: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font-weight: normal;
+}
+
+a:focus,
+a:hover {
+	text-decoration: inherit;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+i {
+	display: block;
+}
