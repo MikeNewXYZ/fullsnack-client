@@ -12,3 +12,4 @@
 ## 🐛 Issues
 
 - Floating card component does not rotate correctly when users mouse hovers over a child element.
+- Cart item does not look good on mobile.
