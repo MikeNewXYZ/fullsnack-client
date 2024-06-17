@@ -95,37 +95,8 @@
 		</div>
 
 		<!-- SCRIPTS -->
-		<script src="./scripts/components.js"></script>
-		<script>
-			const checkoutEl = document.getElementById("floating-cart-checkout");
-
-			checkoutEl.addEventListener("click", async () => {
-				const cart = JSON.parse(localStorage.getItem("cart"));
-				const today = new Date().toJSON().slice(0, 10);
-
-				await cart.forEach(async (item) => {
-					const body = {
-						snack_id: item.id,
-						order_date: today,
-						quantity: item.quantity,
-					};
-
-					const response = await fetch(
-						"https://fullsnack-server-production.up.railway.app/orders",
-						{
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							body: JSON.stringify(body),
-						},
-					);
-				});
-
-				localStorage.removeItem("cart");
-
-				window.location = "./summary.html";
-			});
-		</script>
+		<script src="./scripts/components/card-item-layout.js"></script>
+		<script src="./scripts/components/card-item-list.js"></script>
+		<script src="./scripts/lib/handle-checkout.js"></script>
 	</body>
 </html>
