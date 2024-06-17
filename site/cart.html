@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="./styles/utility.css" />
 		<link rel="stylesheet" href="./styles/navbar.css" />
 		<link rel="stylesheet" href="./styles/cart-item.css" />
+		<link rel="stylesheet" href="./styles/floating-cart-toolbar.css" />
 		<!-- ICONS -->
 		<link
 			rel="stylesheet"
@@ -79,7 +80,52 @@
 			</ul>
 		</cart-item-layout>
 
+		<!-- FLOATING CART TOOLBAR -->
+		<div class="floating-cart-toolbar-wrapper">
+			<floating-card class="floating-cart-toolbar-search-wrapper">
+				<button
+					id="floating-cart-checkout"
+					class="floating-cart-checkout-button utility-hover-toggle"
+				>
+					<i class="ph-fill ph-package utility-hover-toggle-two"></i>
+					<i class="ph-fill ph-truck utility-hover-toggle-one"></i>
+					<span>checkout</span>
+				</button>
+			</floating-card>
+		</div>
+
 		<!-- SCRIPTS -->
 		<script src="./scripts/components.js"></script>
+		<script>
+			const checkoutEl = document.getElementById("floating-cart-checkout");
+
+			checkoutEl.addEventListener("click", async () => {
+				const cart = JSON.parse(localStorage.getItem("cart"));
+				const today = new Date().toJSON().slice(0, 10);
+
+				await cart.forEach(async (item) => {
+					const body = {
+						snack_id: item.id,
+						order_date: today,
+						quantity: item.quantity,
+					};
+
+					const response = await fetch(
+						"https://fullsnack-server-production.up.railway.app/orders",
+						{
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify(body),
+						},
+					);
+				});
+
+				localStorage.removeItem("cart");
+
+				window.location = "./summary.html";
+			});
+		</script>
 	</body>
 </html>
