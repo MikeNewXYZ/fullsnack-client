@@ -1,0 +1,18 @@
+/* SUMMARY */
+/* prefix: summary- */
+
+.summary-background {
+	background-image: url("../assets/background/summary-background.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.summary-snack {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	z-index: -1;
+}

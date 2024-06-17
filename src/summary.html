@@ -1,3 +1,20 @@
+<!-- 
+READ THIS BEN :D
+I have merged your summary page. For some reason however,
+your "../Styles/summary.css" is missing when you pushed your
+branch to the repo. So I have created a new one, you can find it
+at "./styles/summary.css". Please use the prefix "summary-" to avoid
+conflicts with other styles.
+
+To retrieve the snacks table simply fetch https://fullsnack-server-production.up.railway.app/snacks
+To retrieve the orders table simply fetch https://fullsnack-server-production.up.railway.app/orders
+
+I have put your summary script in "./scripts/lib/summary.js"
+
+I have also put your raining snacks work on the summary page.
+You can find the script at "./script/lib/rain-snacks.js"
+-->
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,6 +25,7 @@
 		<link rel="stylesheet" href="./styles/global.css" />
 		<link rel="stylesheet" href="./styles/utility.css" />
 		<link rel="stylesheet" href="./styles/navbar.css" />
+		<link rel="stylesheet" href="./styles/summary.css" />
 		<!-- ICONS -->
 		<link
 			rel="stylesheet"
@@ -15,7 +33,7 @@
 			href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
 		/>
 	</head>
-	<body>
+	<body class="summary-background">
 		<!-- NAVBAR -->
 		<header class="navbar-wrapper">
 			<a class="navbar-header" href="./index.html">
@@ -34,8 +52,36 @@
 			</floating-card>
 		</header>
 
+		<!-- SUMMARY -->
+		<div class="basket content-wrapper">
+			<h1>Your Basket</h1>
+			<form>
+				<table>
+					<thead>
+						<tr>
+							<td colspan="2">Snacks</td>
+							<td>Price</td>
+							<td>Quantity</td>
+							<td>Total</td>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<div class="subtotal">
+					<span class="text">Subtotal</span>
+					<span class="price">£0.00</span>
+				</div>
+				<div class="buttons">
+					<input type="submit" value="Update" name="update" />
+					<input type="submit" value="Place Order" name="placeorder" />
+				</div>
+			</form>
+		</div>
+
 		<!-- SCRIPTS -->
 		<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 		<script src="./scripts/lib/confetti-on-init.js"></script>
+		<script src="./scripts/lib/summary.js"></script>
+		<script src="./scripts/lib/rain-snacks.js"></script>
 	</body>
 </html>
