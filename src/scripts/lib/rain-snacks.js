@@ -1,5 +1,25 @@
 // Snacks will not show in development but will do in production.
 // https://fullsnack-client-production.up.railway.app/summary.html
+
+// In development uncomment the first snacks array and
+// comment out the second. When pushing to main do the reverse.
+
+// USE IN DEVELOPMENT
+// const snacks = [
+// 	"../../src/assets/candy/bluesweet.png",
+// 	"../../src/assets/candy/orangesweet.png",
+// 	"../../src/assets/candy/greensweet.png",
+// 	"../../src/assets/candy/redsweet.png",
+// 	"../../src/assets/candy/donut.png",
+// 	"../../src/assets/candy/cake.png",
+// 	"../../src/assets/candy/cookie.png",
+// 	"../../src/assets/candy/milkshake.png",
+// 	"../../src/assets/candy/icecream.png",
+// 	"../../src/assets/candy/icecream2.png",
+// 	"../../src/assets/candy/marshmallow.png",
+// ];
+
+// USE IN PRODUCTION
 const snacks = [
 	"../../assets/candy/bluesweet.png",
 	"../../assets/candy/orangesweet.png",
