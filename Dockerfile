@@ -1,3 +1,3 @@
 FROM caddy:alpine
-COPY ./site/ /srv/
+COPY ./src/ /srv/
 COPY ./Caddyfile /etc/caddy/Caddyfile
