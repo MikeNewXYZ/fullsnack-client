@@ -1,15 +1,17 @@
+// Snacks will not show in development but will do in production.
+// https://fullsnack-client-production.up.railway.app/summary.html
 const snacks = [
-	"../../src/assets/candy/bluesweet.png",
-	"../../src/assets/candy/orangesweet.png",
-	"../../src/assets/candy/greensweet.png",
-	"../../src/assets/candy/redsweet.png",
-	"../../src/assets/candy/donut.png",
-	"../../src/assets/candy/cake.png",
-	"../../src/assets/candy/cookie.png",
-	"../../src/assets/candy/milkshake.png",
-	"../../src/assets/candy/icecream.png",
-	"../../src/assets/candy/icecream2.png",
-	"../../src/assets/candy/marshmallow.png",
+	"../../assets/candy/bluesweet.png",
+	"../../assets/candy/orangesweet.png",
+	"../../assets/candy/greensweet.png",
+	"../../assets/candy/redsweet.png",
+	"../../assets/candy/donut.png",
+	"../../assets/candy/cake.png",
+	"../../assets/candy/cookie.png",
+	"../../assets/candy/milkshake.png",
+	"../../assets/candy/icecream.png",
+	"../../assets/candy/icecream2.png",
+	"../../assets/candy/marshmallow.png",
 ];
 
 function createSnack() {
