@@ -22,6 +22,7 @@ customElements.define(
 			// method is not avaliable on "this".
 			this.imageEl = this.querySelector("#cart-item-image");
 			this.titleEl = this.querySelector("#cart-item-title");
+			this.priceEl = this.querySelector("#cart-item-price");
 			this.vegetarianEl = this.querySelector("#cart-item-vegetarian");
 			this.healthyEl = this.querySelector("#cart-item-healthy");
 			this.removeEl = this.querySelector("#cart-item-remove");
@@ -43,10 +44,11 @@ customElements.define(
 
 		// Populate itself with data.
 		populateWithData() {
-			const { healthy, image_url, snack_name, vegetarian } = this.data.productData;
+			const { healthy, image_url, snack_name, price, vegetarian } = this.data.productData;
 
 			this.imageEl.src = image_url;
 			this.titleEl.textContent = snack_name;
+			this.priceEl.textContent = `£${parseInt(price) * parseInt(this.data.quantity)}`;
 			this.vegetarianEl.textContent = vegetarian === 1 ? "i'm vegetarian" : "i'm not vegetarian";
 			this.healthyEl.textContent = healthy === 1 ? "i'm healthy" : "i'm not healthy";
 			this.quantityEl.value = this.data.quantity;
@@ -61,6 +63,9 @@ customElements.define(
 				this.handleRemove();
 				return;
 			}
+
+			// Update price when quantity changes.
+			this.priceEl.textContent = `£${parseInt(this.data.productData.price) * quantity}`;
 
 			// Gets the cart data from local storage and
 			// adjusts the quanity to the new one from
