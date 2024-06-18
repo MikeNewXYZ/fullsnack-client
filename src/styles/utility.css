@@ -15,3 +15,7 @@
 .utility-hover-toggle:hover > .utility-hover-toggle-one {
 	display: block;
 }
+
+.utility-hide {
+	display: none !important;
+}

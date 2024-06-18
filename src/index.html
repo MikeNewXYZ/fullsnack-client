@@ -36,10 +36,10 @@
 		</header>
 
 		<!-- SNACK CARDS -->
-		<card-layout-wrapper class="card-layout-wrapper" search="">
+		<main id="cards-wrapper" class="card-layout-wrapper">
 			<template>
 				<floating-card multiplier="5">
-					<snack-card id="card" class="card-wrapper">
+					<div id="card" class="card-wrapper">
 						<div class="card-content">
 							<div class="card-top">
 								<div class="card-top-left">
@@ -66,10 +66,10 @@
 						<div class="card-overlay"></div>
 
 						<img id="card-image" class="card-image" src="src/IMG_1188.jpg" alt="image" />
-					</snack-card>
+					</div>
 				</floating-card>
 			</template>
-		</card-layout-wrapper>
+		</main>
 
 		<!-- FLOATING TOOLBAR -->
 		<floating-toolbar class="floating-toolbar-wrapper">
@@ -85,8 +85,6 @@
 
 		<!-- SCRIPTS -->
 		<script src="./scripts/components/floating-card.js"></script>
-		<script src="./scripts/components/card-layout-wrapper.js"></script>
-		<script src="./scripts/components/snack-card.js"></script>
-		<script src="./scripts/components/floating-toolbar.js"></script>
+		<script src="./scripts/lib/home.js"></script>
 	</body>
 </html>
