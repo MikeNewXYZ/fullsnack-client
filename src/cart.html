@@ -36,11 +36,11 @@
 			</floating-card>
 		</header>
 
-		<cart-item-layout class="cart-item-layout">
-			<ul id="cart-item-list-wrapper" class="cart-item-list-wrapper">
+		<div class="cart-item-layout">
+			<ul id="cart-items-wrapper" class="cart-item-list-wrapper">
 				<template>
 					<floating-card multiplier="2" hoverScale="1.02">
-						<cart-item-list id="card-item-list" class="cart-item-list">
+						<div id="card-item-list" class="cart-item-list">
 							<div class="cart-item-left">
 								<div class="cart-item-image-wrapper">
 									<div id="cart-item-price" class="cart-item-price">£20.42</div>
@@ -76,11 +76,11 @@
 									/>
 								</label>
 							</div>
-						</cart-item-list>
+						</div>
 					</floating-card>
 				</template>
 			</ul>
-		</cart-item-layout>
+		</div>
 
 		<!-- FLOATING CART TOOLBAR -->
 		<div class="floating-cart-toolbar-wrapper">
@@ -98,8 +98,7 @@
 
 		<!-- SCRIPTS -->
 		<script src="./scripts/components/floating-card.js"></script>
-		<script src="./scripts/components/card-item-layout.js"></script>
-		<script src="./scripts/components/card-item-list.js"></script>
-		<script src="./scripts/lib/handle-checkout.js"></script>
+		<script src="./scripts/cart/render-cart-items.js"></script>
+		<script src="./scripts/cart/handle-checkout.js"></script>
 	</body>
 </html>
