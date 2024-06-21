@@ -6,16 +6,28 @@ customElements.define(
 	class extends HTMLElement {
 		constructor() {
 			super();
+
+			// Get the first child element.
 			this.childEl = this.children[0];
+
+			// Read attributes or set default values.
 			this.multiplier = this.getAttribute("multiplier") || 20;
 			this.perspective = this.getAttribute("perspective") || "1000px";
 			this.transitionDuration = this.getAttribute("transitionDuration") || "0.2s";
 			this.hoverScale = this.getAttribute("hoverScale") || "1.05";
+			this.dimensions = { top: 0, left: 0, halfHeight: 0, halfWidth: 0 };
+
+			// Bind methods to "this" context.
+			this.animate = this.animate.bind(this);
+			this.reset = this.reset.bind(this);
+			this.updateDimensions = this.updateDimensions.bind(this);
 		}
 
-		// runs on component mount
 		connectedCallback() {
-			// set styles for elements
+			// Initialize dimensions.
+			this.updateDimensions();
+
+			// Set styles for the parent and child elements.
 			Object.assign(this.style, {
 				display: "block",
 				perspective: this.perspective,
@@ -25,24 +37,36 @@ customElements.define(
 				transition: `transform ${this.transitionDuration}`,
 			});
 
-			// setup event listenters
-			this.childEl.addEventListener("mousemove", this.animate.bind(this));
-			this.childEl.addEventListener("mouseout", this.reset.bind(this));
+			// Set up event listeners.
+			this.childEl.addEventListener("mousemove", this.animate);
+			this.childEl.addEventListener("mouseout", this.reset);
+			window.addEventListener("resize", this.updateDimensions);
 		}
 
-		// runs on component dismount
 		disconnectedCallback() {
-			// remove event listeners on dismount
-			this.childEl.removeEventListener("mousemove", this.animate.bind(this));
+			// Remove event listeners.
+			this.childEl.removeEventListener("mousemove", this.animate);
 			this.childEl.removeEventListener("mouseout", this.reset);
+			window.removeEventListener("resize", this.updateDimensions);
 		}
 
+		// Get the dimensions of the child element.
+		updateDimensions() {
+			const { top, left, height, width } = this.childEl.getBoundingClientRect();
+			this.dimensions = {
+				top,
+				left,
+				halfHeight: height / 2,
+				halfWidth: width / 2,
+			};
+		}
+
+		// Animate the child element based on mouse position.
 		animate(e) {
 			requestAnimationFrame(() => {
-				const halfHeight = this.childEl.offsetHeight / 2;
-				const halfWidth = this.childEl.offsetWidth / 2;
-				const mouseY = e.offsetY;
-				const mouseX = e.offsetX;
+				const { top, left, halfHeight, halfWidth } = this.dimensions;
+				const mouseY = e.clientY - top;
+				const mouseX = e.clientX - left;
 				const rotateY = -((mouseX - halfWidth) / halfWidth);
 				const rotateX = (mouseY - halfHeight) / halfHeight;
 
@@ -56,6 +80,7 @@ customElements.define(
 			});
 		}
 
+		// Reset transform styles to initial state.
 		reset() {
 			requestAnimationFrame(() => {
 				Object.assign(this.childEl.style, {
