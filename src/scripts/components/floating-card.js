@@ -41,6 +41,7 @@ customElements.define(
 			this.childEl.addEventListener("mousemove", this.animate);
 			this.childEl.addEventListener("mouseout", this.reset);
 			window.addEventListener("resize", this.updateDimensions);
+			window.addEventListener("scroll", this.updateDimensions);
 		}
 
 		disconnectedCallback() {
@@ -48,6 +49,7 @@ customElements.define(
 			this.childEl.removeEventListener("mousemove", this.animate);
 			this.childEl.removeEventListener("mouseout", this.reset);
 			window.removeEventListener("resize", this.updateDimensions);
+			window.removeEventListener("scroll", this.updateDimensions);
 		}
 
 		// Get the dimensions of the child element.
@@ -64,7 +66,7 @@ customElements.define(
 		// Animate the child element based on mouse position.
 		animate(e) {
 			requestAnimationFrame(() => {
-				const { top, left, halfHeight, halfWidth } = this.dimensions;
+				const { top, left, halfHeight, halfWidth, scrollY } = this.dimensions;
 				const mouseY = e.clientY - top;
 				const mouseX = e.clientX - left;
 				const rotateY = -((mouseX - halfWidth) / halfWidth);
