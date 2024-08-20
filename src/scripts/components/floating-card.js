@@ -66,7 +66,7 @@ customElements.define(
 		// Animate the child element based on mouse position.
 		animate(e) {
 			requestAnimationFrame(() => {
-				const { top, left, halfHeight, halfWidth, scrollY } = this.dimensions;
+				const { top, left, halfHeight, halfWidth } = this.dimensions;
 				const mouseY = e.clientY - top;
 				const mouseX = e.clientX - left;
 				const rotateY = -((mouseX - halfWidth) / halfWidth);
